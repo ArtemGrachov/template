@@ -4,28 +4,14 @@ const { glob } = require('glob');
 
 const CONFIG = require('../config');
 
-function clean() {
-  return new Promise((resolve, reject) => {
-    fs.rm(CONFIG.OUTPUT_FOLDER, { recursive: true, force: true }, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(CONFIG.OUTPUT_FOLDER);
-      }
-    });
-  })
+async function clean() {
+  await fs.promises.rm(CONFIG.OUTPUT_FOLDER, { recursive: true, force: true });
+  return CONFIG.OUTPUT_FOLDER;
 };
 
-function createOutputFolders() {
-  return new Promise((resolve, reject) => {
-    fs.mkdir(CONFIG.OUTPUT_FOLDER, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(CONFIG.OUTPUT_FOLDER);
-      }
-    });
-  })
+async function createOutputFolders() {
+  await fs.promises.mkdir(CONFIG.OUTPUT_FOLDER);
+  return CONFIG.OUTPUT_FOLDER;
 };
 
 function getFileName(filePath) {
@@ -54,28 +40,14 @@ async function writeFile(rootPath, dirPath, fileName, content) {
   const dirExist = fs.existsSync(outputDirPath);
 
   if (!dirExist) {
-    await new Promise((resolve, reject) => {
-      fs.mkdir(outputDirPath, { recursive: true }, err => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(outputDirPath);
-        }
-      });
-    })
+    await fs.promises.mkdir(outputDirPath, { recursive: true });
   }
 
   const fileFullPath = path.join(outputDirPath, fileName);
 
-  return new Promise((resolve, reject) => {
-    fs.writeFile(fileFullPath, content, err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(fileFullPath);
-      }
-    });
-  });
+  await fs.promises.writeFile(fileFullPath, content);
+
+  return fileFullPath;
 }
 
 module.exports = {

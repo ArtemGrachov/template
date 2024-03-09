@@ -10,6 +10,10 @@ const STYLE_FOLDER = path.join(__dirname, 'styles/entrypoints');
 const STYLE_PATH = path.join(STYLE_FOLDER, '/**/*.scss');
 const STYLE_OUTPUT = path.join(OUTPUT_FOLDER, 'styles');
 
+const SCRIPTS_FOLDER = path.join(__dirname, 'scripts');
+const SCRIPTS_PATH = path.join(SCRIPTS_FOLDER, '/**/*.js');
+const SCRIPTS_OUTPUT = path.join(OUTPUT_FOLDER, 'scripts');
+
 const CONFIG = {
   OUTPUT_FOLDER,
   TEMPLATE_FOLDER,
@@ -17,7 +21,10 @@ const CONFIG = {
   TEMPLATE_OUTPUT,
   STYLE_FOLDER,
   STYLE_PATH,
-  STYLE_OUTPUT
+  STYLE_OUTPUT,
+  SCRIPTS_FOLDER,
+  SCRIPTS_PATH,
+  SCRIPTS_OUTPUT
 };
 
 module.exports = CONFIG;
