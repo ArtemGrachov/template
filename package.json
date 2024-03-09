@@ -1,0 +1,17 @@
+{
+  "name": "landing-2024-03-09",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "^10.3.10",
+    "pug": "^3.0.2",
+    "sass": "^1.71.1",
+    "typescript": "^5.4.2"
+  }
+}
