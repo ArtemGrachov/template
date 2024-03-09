@@ -20,7 +20,6 @@ function compileTemplate(fullPath) {
 async function writeTemplate(fileName, filePath, content) {
   const result = await writeFile(TEMPLATE_OUTPUT, filePath, `${fileName}.html`, content);
 
-  console.log(result);
   return result;
 }
 
